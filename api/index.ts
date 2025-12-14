@@ -1,4 +1,4 @@
-import { createApp } from "./_lib/app";
+import { createApp } from "./_lib/app.js";
 
 // Vercel Serverless Function handler
 export default async function handler(req: any, res: any) {
