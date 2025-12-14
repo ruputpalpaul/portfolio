@@ -1,22 +1,27 @@
 import { motion } from "framer-motion";
+import LiquidEther from "./LiquidEther";
 
 export default function Hero() {
   return (
-    <section id="top" className="min-h-screen flex flex-col justify-between pt-32 pb-8 px-6 md:px-8 border-b border-black">
-      <div className="flex flex-col">
+    <section id="top" className="min-h-screen flex flex-col justify-between pt-32 pb-8 px-6 md:px-8 border-b border-black relative overflow-hidden bg-white">
+      <div className="absolute inset-0 z-0 opacity-60">
+        <LiquidEther />
+      </div>
+
+      <div className="flex flex-col relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-black">
+          <h1 className="text-[12vw] leading-[0.8] font-medium tracking-tighter text-black mix-blend-difference">
             RUP<br />
             PAUL
           </h1>
         </motion.div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-end md:items-start gap-8 mt-12">
+      <div className="flex flex-col md:flex-row justify-between items-end md:items-start gap-8 mt-12 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
