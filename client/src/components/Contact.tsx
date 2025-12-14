@@ -21,7 +21,7 @@ export default function Contact() {
     },
     onSuccess: () => {
       toast.success("Message sent successfully!");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      // Don't clear form, just leave it disabled
     },
     onError: (error) => {
       toast.error("Failed to send message. Please try again.");
@@ -38,6 +38,8 @@ export default function Contact() {
     mutation.mutate(formData);
   };
 
+  const isSent = mutation.isSuccess;
+
   return (
     <section id="contact" className="min-h-[80vh] flex flex-col justify-between px-6 md:px-8 py-24 bg-black text-white">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -53,13 +55,14 @@ export default function Contact() {
         </div>
 
         <div className="md:col-span-6 flex items-end">
-          <form onSubmit={handleSubmit} className="w-full space-y-0">
+          <form onSubmit={handleSubmit} className={`w-full space-y-0 ${isSent ? 'opacity-50 pointer-events-none' : ''}`}>
             <div className="border-t border-white/20">
               <Input
                 placeholder="NAME"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="bg-transparent border-0 rounded-none h-16 px-0 text-xl font-mono focus-visible:ring-0 placeholder:text-white/30 text-white"
+                disabled={isSent || mutation.isPending}
               />
             </div>
             <div className="border-t border-white/20">
@@ -69,6 +72,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="bg-transparent border-0 rounded-none h-16 px-0 text-xl font-mono focus-visible:ring-0 placeholder:text-white/30 text-white"
+                disabled={isSent || mutation.isPending}
               />
             </div>
             <div className="border-t border-white/20">
@@ -78,6 +82,7 @@ export default function Contact() {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="bg-transparent border-0 rounded-none h-16 px-0 text-xl font-mono focus-visible:ring-0 placeholder:text-white/30 text-white"
+                disabled={isSent || mutation.isPending}
               />
             </div>
             <div className="border-t border-white/20">
@@ -86,15 +91,16 @@ export default function Contact() {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="bg-transparent border-0 rounded-none h-32 px-0 py-4 text-xl font-mono focus-visible:ring-0 placeholder:text-white/30 resize-none text-white"
+                disabled={isSent || mutation.isPending}
               />
             </div>
             <div className="border-t border-b border-white/20">
               <Button
                 type="submit"
-                disabled={mutation.isPending}
+                disabled={isSent || mutation.isPending}
                 className="w-full bg-white hover:bg-gray-200 text-black rounded-none h-16 font-mono text-lg uppercase tracking-wide"
               >
-                {mutation.isPending ? "[ Sending... ]" : "[ Send Transmission ]"}
+                {isSent ? "[ Sent Successfully ]" : mutation.isPending ? "[ Sending... ]" : "[ Send Transmission ]"}
               </Button>
             </div>
           </form>
