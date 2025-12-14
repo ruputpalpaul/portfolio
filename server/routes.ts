@@ -33,8 +33,15 @@ export async function registerRoutes(
 
       // In a real app, you would validate the email format here
 
+      const smtpUser = process.env.SMTP_USER;
+
+      if (!smtpUser) {
+        console.warn("SMTP_USER is not defined. Email transmission may fail or go to spam.");
+      }
+
       const info = await transporter.sendMail({
-        from: `"${name}" <${email}>`, // sender address
+        from: `"Portfolio Contact Form" <${smtpUser || "info@ruppaul.com"}>`, // sender address should be the authenticated user
+        replyTo: `"${name}" <${email}>`, // reply directly to the sender
         to: "info@ruppaul.com", // list of receivers
         subject: `StartUp Portfolio Contact: ${name}`, // Subject line
         text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`, // plain text body
