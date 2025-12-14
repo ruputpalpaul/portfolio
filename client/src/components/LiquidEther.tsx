@@ -547,7 +547,7 @@ export default function LiquidEther({
                     this.scene.add(this.plane);
                 }
             }
-            update() {
+            update(props?: any) {
                 if (Common.renderer && this.scene && this.camera) {
                     Common.renderer.setRenderTarget(this.props.output || null);
                     Common.renderer.render(this.scene, this.camera);
@@ -574,7 +574,7 @@ export default function LiquidEther({
                     },
                     output: simProps.dst
                 });
-                this.uniforms = this.props.material.uniforms;
+                this.uniforms = (this.props.material as any).uniforms;
                 this.init();
             }
             init() {
