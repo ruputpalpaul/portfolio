@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  "Battery Pack Design & EV Systems",
+
   "PLC Programming (Mitsubishi iQ-R)",
   "Digital Factory & Dashboarding",
   "Robotics (Fanuc, UR10e)",

@@ -5,13 +5,13 @@ const history = [
     year: "SEP 2025—PRES",
     role: "Project Engineer",
     company: "THK America, Inc.",
-    details: "Manufacturing & Automation. Digital factory dashboards, PLC poka-yoke systems, Robot/AMR integration.",
+    details: "Manufacturing & Automation. Digital factory dashboards, PLC poka-yoke systems, Robot/AMR integration, and automated assembly programming.",
   },
   {
-    year: "MAY 2024—JUN 2024",
+    year: "MAY 2024—JUN 2025",
     role: "Design & Mfg Engineer",
     company: "Univ. of Michigan - Stellantis Truck Team",
-    details: "Battery vehicle integration, pack enclosure design, high-voltage routing.",
+    details: "Battery vehicle integration, pack enclosure design, and high-voltage routing.",
   },
   {
     year: "AUG 2024—DEC 2024",
@@ -78,11 +78,11 @@ export default function Experience() {
               </div>
             </div>
           ))}
-          
+
           <div className="pt-12 border-t border-black/10">
-             <p className="text-2xl font-light leading-snug">
-               "Passionate about building the next generation of electric vehicles and off-road mobility systems. Taking ideas from concept to production."
-             </p>
+            <p className="text-2xl font-light leading-snug">
+              "Passionate about building the next generation of electric vehicles and off-road mobility systems. Taking ideas from concept to production."
+            </p>
           </div>
         </div>
       </div>
