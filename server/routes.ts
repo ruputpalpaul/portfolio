@@ -25,9 +25,9 @@ export async function registerRoutes(
 
   app.post("/api/contact", async (req, res) => {
     try {
-      const { name, email, message } = req.body;
+      const { name, email, phone, message } = req.body;
 
-      if (!name || !email || !message) {
+      if (!name || !email || !phone || !message) {
         return res.status(400).json({ message: "Missing required fields" });
       }
 
@@ -37,8 +37,11 @@ export async function registerRoutes(
         from: `"${name}" <${email}>`, // sender address
         to: "info@ruppaul.com", // list of receivers
         subject: `StartUp Portfolio Contact: ${name}`, // Subject line
-        text: message, // plain text body
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message}</p>`, // html body
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`, // plain text body
+        html: `<p><strong>Name:</strong> ${name}</p>
+               <p><strong>Email:</strong> ${email}</p>
+               <p><strong>Phone:</strong> ${phone}</p>
+               <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>`, // html body
       });
 
       console.log("Message sent: %s", info.messageId);

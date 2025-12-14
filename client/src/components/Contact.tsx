@@ -10,6 +10,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: ""
   });
 
@@ -20,7 +21,7 @@ export default function Contact() {
     },
     onSuccess: () => {
       toast.success("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
     },
     onError: (error) => {
       toast.error("Failed to send message. Please try again.");
@@ -30,7 +31,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       toast.error("Please fill in all fields");
       return;
     }
@@ -67,6 +68,15 @@ export default function Contact() {
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="bg-transparent border-0 rounded-none h-16 px-0 text-xl font-mono focus-visible:ring-0 placeholder:text-white/30 text-white"
+              />
+            </div>
+            <div className="border-t border-white/20">
+              <Input
+                placeholder="PHONE NUMBER"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="bg-transparent border-0 rounded-none h-16 px-0 text-xl font-mono focus-visible:ring-0 placeholder:text-white/30 text-white"
               />
             </div>
