@@ -45,10 +45,10 @@ export default function Contact() {
     <section id="contact" className="min-h-[80vh] flex flex-col justify-between px-6 md:px-8 py-24 bg-black text-white relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Antigravity
-          color="#e0e0e0"
-          magnetRadius={15}
-          ringRadius={12}
-          count={200}
+          color="#999999"
+          magnetRadius={10}
+          ringRadius={8}
+          count={150}
           particleSize={2.5}
           autoAnimate={true}
         />
