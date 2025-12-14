@@ -42,7 +42,7 @@ export async function registerRoutes(
       const info = await transporter.sendMail({
         from: `"Portfolio Contact Form" <${smtpUser || "info@ruppaul.com"}>`, // sender address should be the authenticated user
         replyTo: `"${name}" <${email}>`, // reply directly to the sender
-        to: "info@ruppaul.com", // list of receivers
+        to: smtpUser || "info@ruppaul.com", // send to yourself (the authenticated user)
         subject: `StartUp Portfolio Contact: ${name}`, // Subject line
         text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`, // plain text body
         html: `<p><strong>Name:</strong> ${name}</p>
