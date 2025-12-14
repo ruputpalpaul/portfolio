@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import Antigravity from "./Antigravity";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -41,8 +42,19 @@ export default function Contact() {
   const isSent = mutation.isSuccess;
 
   return (
-    <section id="contact" className="min-h-[80vh] flex flex-col justify-between px-6 md:px-8 py-24 bg-black text-white">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+    <section id="contact" className="min-h-[80vh] flex flex-col justify-between px-6 md:px-8 py-24 bg-black text-white relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <Antigravity
+          color="#e0e0e0"
+          magnetRadius={15}
+          ringRadius={12}
+          count={200}
+          particleSize={2.5}
+          autoAnimate={true}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 relative z-10">
         <div className="md:col-span-6">
           <h2 className="text-[8vw] leading-[0.8] font-medium tracking-tighter mb-8">
             LET'S<br />BUILD
@@ -107,7 +119,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <footer className="mt-24 flex justify-between font-mono text-xs uppercase opacity-40">
+      <footer className="mt-24 flex justify-between font-mono text-xs uppercase opacity-40 relative z-10">
         <div>© {new Date().getFullYear()} RUP UTPAL PAUL</div>
         <div>MANUFACTURING ENGINEER</div>
       </footer>
